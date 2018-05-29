@@ -12,6 +12,6 @@ RUN apt-get update && apt-get install -y \
 # Define working directory
 WORKDIR /data
 
-COPY ./* .
+COPY ./* ./
 
 RUN pip install -r requirements.txt
