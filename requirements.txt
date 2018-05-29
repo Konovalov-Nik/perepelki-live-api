@@ -1,2 +1,4 @@
+gevent
 Flask
+PyMySQL
 sqlalchemy>=1.2
