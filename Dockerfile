@@ -16,3 +16,7 @@ WORKDIR /data
 COPY ./* ./
 
 RUN pip install -r requirements.txt
+
+RUN pip install .
+
+EXPOSE 5000/tcp
