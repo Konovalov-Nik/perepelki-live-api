@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from perepelki_api.db.models import Comment
 from perepelki_api.db.models import engine
+import perepelki_api.db.utils as dbutils
 
 Session = sessionmaker(bind=engine)
 
@@ -17,7 +18,7 @@ def get_comments():
 
 
 def get_comments_json():
-    return json.dumps([dict(c) for c in get_comments()])
+    return json.dumps([dbutils.row2dict(c) for c in get_comments()])
 
 
 def post_comment(name, text):
