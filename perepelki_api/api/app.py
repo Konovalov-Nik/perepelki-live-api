@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 from flask import make_response
 
 import perepelki_api.db.api as dbapi
@@ -14,3 +15,13 @@ def get_comments():
     resp.headers["Content-Type"] = "application/json"
 
     return resp
+
+
+@APP.route("/comments", methods=["POST"])
+def post_comment():
+    name = request.form["name"]
+    text = request.form["text"]
+
+    dbapi.post_comment(name, text)
+
+    return make_response("Saved", 202)
