@@ -22,7 +22,6 @@ def get_comments_json():
 
 def post_comment(name, text):
     session = Session()
-
-    c = Comment(name=name, content=text)
-    session.add(c)
-    session.close()
+    with session.begin():
+        c = Comment(name=name, content=text)
+        session.add(c)
