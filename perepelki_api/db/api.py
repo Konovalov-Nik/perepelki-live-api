@@ -17,7 +17,7 @@ def get_comments():
 
 
 def get_comments_json():
-    return json.dumps(get_comments())
+    return json.dumps([c._asdict() for c in get_comments()])
 
 
 def post_comment(name, text):
